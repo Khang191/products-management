@@ -1,0 +1,33 @@
+version: "3.9"
+services:
+  nodejs-app:
+    image: node:21.7.1-alpine3.19
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - "3001:3001"
+    entrypoint: [ "/bin/sh", "-c", "npm i && npm run dev" ]
+    depends_on:
+      - db
+    networks:
+      - products-management
+
+  db:
+    build:
+      context: ./.docker/mysql
+    ports:
+      - "23306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    volumes:
+      - ./.docker/data/mysql/data:/var/lib/mysql
+      - ./.docker/data/mysql/logs:/var/log/mysql
+    networks:
+      - products-management
+
+networks:
+  products-management: { }
