@@ -1,9 +1,9 @@
 export const metadata = {
-    title: 'Product management',
+    title: 'Product Detail',
     description: '',
 }
 
-export default function AdminProductsLayout(
+export default function ProductDetailLayout(
     {
         children,
     }: {

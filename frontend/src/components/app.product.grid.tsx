@@ -2,6 +2,8 @@
 
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
+import { mutate } from "swr";
+import Link from "next/link";
 
 interface IProps {
     products: IProduct[]
@@ -9,7 +11,26 @@ interface IProps {
 
 const AppProductGrid = (props: IProps) => {
     const { products } = props
-    console.log(products)
+
+    const handleDelete = (id) => {
+        if (confirm(`Do you want to delete this product (id = ${id})`)) {
+            fetch(`http://localhost:3001/api/products/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json'
+                },
+
+            }).then(res => res.json())
+                .then(res => {
+                    if (res) {
+                        //toast.success("Delete blog succeed !");
+                        mutate("http://localhost:3001/api/products")
+                    }
+                });
+        }
+    }
+
     return (
         <Table striped bordered hover>
             <thead>
@@ -32,7 +53,14 @@ const AppProductGrid = (props: IProps) => {
                         <td>{product.category}</td>
                         <td>{product.created_at}</td>
                         <td>
-                            <Button variant="danger">Delete</Button>
+                            <Link
+                                className='btn btn-primary'
+                                href={`/admin/product/${product.id}`}>View</Link>
+                            <Button
+                                variant="danger"
+                                className='mx-3'
+                                onClick={() => {handleDelete(product.id)}}
+                            >Delete</Button>
                         </td>
                     </tr>
                 )

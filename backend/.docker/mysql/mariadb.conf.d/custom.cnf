@@ -1,0 +1,11 @@
+[mysqld]
+innodb_buffer_pool_size = 4G
+
+query_cache_type = 1
+query_cache_size = 80M
+query_cache_limit = 256K
+query_cache_min_res_unit = 2K
+max_allowed_packet      = 500M
+
+[mysqldump]
+max_allowed_packet      = 500M
