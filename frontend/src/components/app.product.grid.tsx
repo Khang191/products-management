@@ -32,41 +32,51 @@ const AppProductGrid = (props: IProps) => {
     }
 
     return (
-        <Table striped bordered hover>
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Created at</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            {products.map((product, i) => {
-                return (
-                    <tr key={product.id}>
-                        <td>{i}</td>
-                        <td>{product.id}</td>
-                        <td>{product.name}</td>
-                        <td>{product.category}</td>
-                        <td>{product.created_at}</td>
-                        <td>
-                            <Link
-                                className='btn btn-primary'
-                                href={`/admin/product/${product.id}`}>View</Link>
-                            <Button
-                                variant="danger"
-                                className='mx-3'
-                                onClick={() => {handleDelete(product.id)}}
-                            >Delete</Button>
-                        </td>
-                    </tr>
-                )
-            })}
-            </tbody>
-        </Table>
+        <>
+            <div
+                className='mb-3'
+                style={{display: "flex", justifyContent: "space-between"}}>
+                <h3>Products</h3>
+                <Link
+                    className='btn btn-secondary'
+                    href={'/admin/product/add'}>Add New</Link>
+            </div>
+            <Table striped bordered hover>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>SKU</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Created at</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {products.map((product, i) => {
+                    return (
+                        <tr key={product.id}>
+                            <td>{product.id}</td>
+                            <td>{product.sku}</td>
+                            <td>{product.name}</td>
+                            <td>{product.category}</td>
+                            <td>{product.created_at}</td>
+                            <td>
+                                <Link
+                                    className='btn btn-primary'
+                                    href={`/admin/product/${product.id}`}>View</Link>
+                                <Button
+                                    variant="danger"
+                                    className='mx-3'
+                                    onClick={() => {handleDelete(product.id)}}
+                                >Delete</Button>
+                            </td>
+                        </tr>
+                    )
+                })}
+                </tbody>
+            </Table>
+        </>
     );
 }
 

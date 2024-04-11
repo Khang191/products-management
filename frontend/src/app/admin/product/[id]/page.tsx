@@ -1,6 +1,8 @@
 'use client'
+
 import AppProductForm from "@/components/app.product.form";
 import useSWR from "swr";
+import {useState} from "react";
 
 const ProductDetail = ({ params }: { params: { id: string } }) => {
     const fetcher = (url: string) => fetch(url)
@@ -21,7 +23,7 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
     }
 
     return (
-        <AppProductForm product={data} />
+        <AppProductForm product={data}/>
     )
 }
 

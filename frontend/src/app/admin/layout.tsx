@@ -5,21 +5,19 @@ import Container from 'react-bootstrap/Container';
 import AppHeader from "@/components/app.header";
 import AppFooter from "@/components/app.footer";
 
-export default function RootLayout(
+export default function AdminLayout(
     {
         children,
     }: {
         children: React.ReactNode
     }) {
     return (
-        <html lang="en">
-        <body>
-        <AppHeader />
-        <Container>
-            {children}
-        </Container>
-        <AppFooter />
-        </body>
-        </html>
+        <>
+            <AppHeader />
+            <Container>
+                {children}
+            </Container>
+            <AppFooter />
+        </>
     )
 }

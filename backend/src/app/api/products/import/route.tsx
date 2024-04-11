@@ -4,7 +4,7 @@ export async function GET(request: Request) {
 
     const products = [
         {
-            "id": "GGOEAFKA087499",
+            "sku": "GGOEAFKA087499",
             "name": "Android Small Removable Sticker Sheet",
             "description": "Show your Android pride by placing these 8 fun stickers on your technology products or accessories!",
             "features": "<p>8 Android stickers</p>\n<p>White colored sticker sheet</p>",
@@ -14,7 +14,7 @@ export async function GET(request: Request) {
             "category": "accessories",
             "image": "http://images.thenorthface.com/is/image/TheNorthFace/236x204_CLR/mens-better-than-naked-jacket-AVMH_LC9_hero.png"
         },{
-            "id": "GGOEWXXX0827",
+            "sku": "GGOEWXXX0827",
             "name": "Waze Women's Short Sleeve Tee",
             "description": "Made of soft tri-blend jersey fabric, this great t-shirt will help you find your Waze. Made in USA.",
             "features": "<p>Jersey knit</p>\n<p>37.5% cotton, 50% polyester, 12.5% rayon</p>\n<p>Made in the USA</p>",
@@ -24,7 +24,7 @@ export async function GET(request: Request) {
             "category": "apparel",
             "image": "http://images.thenorthface.com/is/image/TheNorthFace/236x204_CLR/womens-better-than-naked-jacket-AVKL_NN4_hero.png"
         },{
-            "id": "GGOEGEBK094499",
+            "sku": "GGOEGEBK094499",
             "name": "Google Bot",
             "description": "This Google Bot can hold multiple poses making it a fun toy for all. Fold the Google Bot back up into a perfect cube when you are done playing.",
             "features": "<p>Made of wood</p>\n<p>2.5 x 2.5 inch cube</p>\n<p>6.75 inch tall</p>\n<p>Recommended for Ages 3+</p>",
@@ -34,7 +34,7 @@ export async function GET(request: Request) {
             "category": "accessories",
             "image": "http://images.thenorthface.com/is/image/TheNorthFace/236x204_CLR/womens-single-track-shoe-ALQF_JM3_hero.png"
         },{
-            "id": "GGOEGFKA086699",
+            "sku": "GGOEGFKA086699",
             "name": "Google Emoji Sticker Pack",
             "description": "Who doesn't use emojis? Decorate your space with your current mood!",
             "features": "<p>Pack contains two sticker sheets</p>\n<p>Each Sheet has different emojis</p>\n<p><span>Decal dimensions should fit in a maximum sheet size of 12 3/4 x 17 1/2 inch.</span></p>",
@@ -44,7 +44,7 @@ export async function GET(request: Request) {
             "category": "accessories",
             "image": "http://images.thenorthface.com/is/image/TheNorthFace/236x204_CLR/enduro-boa-hydration-pack-AJQZ_JK3_hero.png"
         },{
-            "id": "GGOEWCKQ085457",
+            "sku": "GGOEWCKQ085457",
             "name": "Waze Pack of 9 Decal Set",
             "description": "Can't decide which Waze decal to get? We have made that decision easier for you! Now you can purchase a pack of nine Waze Mood Decals!",
             "features": "<p>Pack of 9 includes:</p>\n<p>3 Waze Mood Happy decals</p>\n<p>3 Waze Mood Original decals</p>\n<p>3 Waze Mood Ninja decals</p>",
@@ -54,7 +54,7 @@ export async function GET(request: Request) {
             "category": "accessories",
             "image": "http://images.thenorthface.com/is/image/TheNorthFace/236x204_CLR/mens-better-than-naked-jacket-AVMH_LC9_hero.png"
         },{
-            "id": "GGOEGHPB071610",
+            "sku": "GGOEGHPB071610",
             "name": "Google Twill Cap",
             "description": "Classic urban styling distinguishes this Google cap. Retains its shape, even when not being worn.",
             "features": "<p>Heavy weight brushed twill</p>\n<p>Adjustable velcro closure</p>\n<p>One size fits all</p>",
@@ -64,7 +64,7 @@ export async function GET(request: Request) {
             "category": "apparel",
             "image": "http://images.thenorthface.com/is/image/TheNorthFace/236x204_CLR/womens-better-than-naked-jacket-AVKL_NN4_hero.png"
         },{
-            "id": "GGOEGHPJ094299",
+            "sku": "GGOEGHPJ094299",
             "name": "Google Fold-over Beanie Grey",
             "description": "Keep you ears warm while enjoying a cold winter day with this Google Fold-over Beanie.",
             "features": "<p>100% acrylic</p>\n<p>One size fits all</p>",
@@ -79,7 +79,7 @@ export async function GET(request: Request) {
     try {
         products.map(async (product) => {
             let values = [[
-                product.id,
+                product.sku,
                 product.name,
                 product.description,
                 product.features,
@@ -90,7 +90,7 @@ export async function GET(request: Request) {
                 product.image
             ]]
             const rs = await db.query(
-                "INSERT INTO products (id, name, description, features, price, keywords, url, category, image) VALUES ?",
+                "INSERT INTO products (sku, name, description, features, price, keywords, url, category, image) VALUES ?",
                 [values]
             )
         })

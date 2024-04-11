@@ -1,5 +1,5 @@
 export const metadata = {
-    title: 'Product detail',
+    title: 'Add new product',
     description: '',
 }
 
